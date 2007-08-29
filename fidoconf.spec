@@ -107,7 +107,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc COPYING ChangeLog HISTORY INSTALL README.TXT TODO VERSION fconf2dir fconf2fidogate.cfg.sample doc/config
 %{_bindir}/*
-%{_infodir}/fidoconfig.info.bz2
+%{_infodir}/fidoconfig.info*
 %{_mandir}/*/*
 
 %files -n %libname
