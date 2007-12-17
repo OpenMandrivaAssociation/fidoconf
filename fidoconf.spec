@@ -15,7 +15,6 @@ Release:    %{release}
 License:	GPL
 Group:		File tools
 Source:		%{name}-%{major}-%{preversion}.tar.bz2
-BuildRoot:  %{_tmppath}/%{name}-%{version}-root
 Patch0:		fidoconf-20021015-main.patch
 Patch1:		fidoconf-20021015-doc.patch
 Patch2:		fidoconf-20021015-man.patch
