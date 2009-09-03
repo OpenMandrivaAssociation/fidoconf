@@ -2,7 +2,7 @@
 %define version 1.4.0
 %define preversion rc5
 
-%define rel %mkrel 3
+%define rel %mkrel 4
 %define release 0.%{preversion}.%{rel}
 
 %define major 1.4
