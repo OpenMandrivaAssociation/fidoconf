@@ -1,0 +1,11 @@
+--- fidoconf/doc/Makefile-old	Sun May  6 00:47:57 2001
++++ fidoconf/doc/Makefile	Sat May 18 02:57:58 2002
+@@ -3,7 +3,7 @@
+ # Every Debian-Source-Paket has one included.
+ include ../debian/huskymak.cfg
+ else
+-include ../../huskymak.cfg
++include /usr/share/husky/huskymak.cfg
+ endif
+ 
+ all: html info dvi

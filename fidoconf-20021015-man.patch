@@ -1,0 +1,11 @@
+--- fidoconf/man/Makefile-old	Thu Apr 11 23:46:44 2002
++++ fidoconf/man/Makefile	Tue May 21 10:28:03 2002
+@@ -7,7 +7,7 @@
+ ifeq ($(DEBIAN), 1)
+ include ../debian/huskymak.cfg
+ else
+-include ../../huskymak.cfg
++include /usr/share/husky/huskymak.cfg
+ endif
+ 
+ MAN1PAGES     = dumpfcfg.1 fconf2.1 linkedto.1 tparser.1

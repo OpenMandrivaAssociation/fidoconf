@@ -1,0 +1,15 @@
+--- fidoconf/fc2fgate.c-old	2003-03-21 10:02:28.000000000 +0200
++++ fidoconf/fc2fgate.c	2003-05-26 23:45:29.000000000 +0300
+@@ -105,10 +105,10 @@
+    s_area *area;
+    char hlp[100];
+ 
+-   f = fopen("/etc/fido/fconf2fidogate.cfg", "r");
++   f = fopen("/etc/husky/fconf2fidogate.cfg", "r");
+    if (f==NULL)
+       {
+-      printf("You have to place the file fconf2fidogate.cfg into /etc/fido !\n");
++      printf("You have to place the file fconf2fidogate.cfg into /etc/husky !\n");
+       exit(3);
+       }
+ 

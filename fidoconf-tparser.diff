@@ -1,0 +1,21 @@
+diff -ur fidoconf-new/tparser.c fidoconf/tparser.c
+--- fidoconf-new/tparser.c	2003-05-22 16:44:46.000000000 -0400
++++ fidoconf/tparser.c	2003-11-19 18:24:29.000000000 -0500
+@@ -49,7 +49,7 @@
+ #endif
+ 
+ #include "version.h"
+-#include "cvsdate.h"
++#include "smapi/cvsdate.h"
+ #include "fidoconf.h"
+ #include "xstr.h"
+ #include "common.h"
+@@ -1137,7 +1137,7 @@
+ 
+ const char *smapi_cvs_date(){
+ static
+-#include "../smapi/cvsdate.h"
++#include "smapi/cvsdate.h"
+ return cvs_date;
+ }
+ 

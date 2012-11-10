@@ -1,0 +1,11 @@
+--- fidoconf/Makefile-old	Sun Apr  7 00:46:39 2002
++++ fidoconf/Makefile	Sat May 18 02:51:49 2002
+@@ -3,7 +3,7 @@
+ # Every Debian-Source-Paket has one included.
+ include debian/huskymak.cfg
+ else
+-include ../huskymak.cfg
++include /usr/share/husky/huskymak.cfg
+ endif
+ 
+ # program settings

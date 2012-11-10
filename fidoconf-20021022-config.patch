@@ -1,0 +1,11 @@
+--- fidoconf/fidoconf.c.orig	Sat Jun 15 23:46:56 2002
++++ fidoconf/fidoconf.c	Sun Aug  4 16:01:23 2002
+@@ -175,7 +175,7 @@
+ #ifdef CFGDIR
+    char *osSpecificPrefix = CFGDIR;
+ #elif defined(__linux__)
+-   char *osSpecificPrefix = "/etc/fido/";
++   char *osSpecificPrefix = "/etc/husky/";
+ #elif defined(__FreeBSD__)
+    char *osSpecificPrefix = "/usr/local/etc/fido/";
+ #elif defined(UNIX)

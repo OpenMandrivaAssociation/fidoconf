@@ -1,0 +1,13 @@
+diff -ur fidoconf/Makefile fidoconf-new/Makefile
+--- fidoconf/Makefile	2003-11-19 18:25:45.000000000 -0500
++++ fidoconf-new/Makefile	2003-11-19 18:27:48.000000000 -0500
+@@ -125,9 +125,6 @@
+ 	cd $(LIBDIR) ;\
+ 	$(LN) $(LNOPT) $(LIBFIDOCONFIG).so.$(VER) $(LIBFIDOCONFIG).so.$(VERH) ;\
+ 	$(LN) $(LNOPT) $(LIBFIDOCONFIG).so.$(VER) $(LIBFIDOCONFIG).so
+-ifneq (~$(LDCONFIG)~, ~~)
+-	$(LDCONFIG)
+-endif
+ 
+ else
+ instdyn: commonlibs
