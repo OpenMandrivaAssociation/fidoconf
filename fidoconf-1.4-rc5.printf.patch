@@ -1,0 +1,11 @@
+--- fidoconf/line.c.printf	2006-04-20 22:06:58.000000000 +0400
++++ fidoconf/line.c	2012-11-06 19:24:35.583842586 +0400
+@@ -1498,7 +1498,7 @@ int parseEchoAreaDefault(const s_fidocon
+        }else if ((isdigit(*tok) || (*tok=='*')) && (patmat(tok, "*:*/*") || patmat(tok, "*:*/*.*"))) {
+            if (strchr(tok, '*')) {
+                for (i=0; i<config->linkCount; i++) {
+-                   sprintf(addr, aka2str(config->links[i].hisAka));
++                   sprintf("%s", addr, aka2str(config->links[i].hisAka));
+                    if (patmat(addr, tok)) {
+                        parseAreaLink(config,adef,addr);
+                        adef->downlinks[adef->downlinkCount-1]->mandatory = 1;

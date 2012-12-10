@@ -1,0 +1,40 @@
+--- fidoconf/doc/Makefile.huskymak	2006-04-20 22:06:58.000000000 +0400
++++ fidoconf/doc/Makefile	2012-11-06 19:26:42.487822226 +0400
+@@ -1,10 +1,6 @@
+ # include Husky-Makefile-Config
+-ifeq ($(DEBIAN), 1)
+ # Every Debian-Source-Paket has one included.
+ include /usr/share/husky/huskymak.cfg
+-else
+-include ../../huskymak.cfg
+-endif
+ 
+ all: html info dvi
+ 
+--- fidoconf/Makefile.huskymak	2012-11-06 19:26:42.467822027 +0400
++++ fidoconf/Makefile	2012-11-06 19:26:42.487822226 +0400
+@@ -1,10 +1,6 @@
+ # include Husky-Makefile-Config
+-ifeq ($(DEBIAN), 1)
+ # Every Debian-Source-Paket has one included.
+ include /usr/share/husky/huskymak.cfg
+-else
+-include ../huskymak.cfg
+-endif
+ 
+ ifndef ISOPT
+ # install scripts options
+--- fidoconf/man/Makefile.huskymak	2003-02-04 22:00:00.000000000 +0300
++++ fidoconf/man/Makefile	2012-11-06 19:27:19.399779346 +0400
+@@ -4,11 +4,7 @@
+ # Use with GNU version of make program (gmake)
+ #
+ # include Husky Makefile Config
+-ifeq ($(DEBIAN), 1)
+ include /usr/share/husky/huskymak.cfg
+-else
+-include ../../huskymak.cfg
+-endif
+ 
+ MAN1PAGES     = dumpfcfg.1 fconf2.1 linked.1 linkedto.1 tparser.1
+ FCONF2ALIASES = fconf2aquaed.1 fconf2areasbbs.1 fconf2binkd.1 \

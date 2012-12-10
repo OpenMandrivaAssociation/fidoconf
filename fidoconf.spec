@@ -2,7 +2,7 @@
 %define version 1.4.0
 %define preversion rc5
 
-%define rel %mkrel 4
+%define rel 3
 %define release 0.%{preversion}.%{rel}
 
 %define major 1.4
@@ -14,8 +14,7 @@ Version:    %{version}
 Release:    %{release}
 License:	GPL
 Group:		File tools
-Source:		%{name}-%{major}-%{preversion}.tar.bz2
-BuildRoot:  %{_tmppath}/%{name}-%{version}-root
+Source0:		%{name}-%{major}-%{preversion}.tar.bz2
 Patch0:		fidoconf-20021015-main.patch
 Patch1:		fidoconf-20021015-doc.patch
 Patch2:		fidoconf-20021015-man.patch
@@ -23,6 +22,8 @@ Patch3:		fidoconf-20021022-config.patch
 Patch4:		fidoconf-20030523-fc2fgate.patch
 Patch5:		fidoconf-tparser.diff
 Patch6:		fidoconf-Makefile.diff
+patch7:		fidoconf-1.4-rc5.huskymak.patch
+patch8:		fidoconf-1.4-rc5.printf.patch
 BuildRequires:	huskybse smapi-devel texinfo
 URL:		http://sourceforge.net/projects/husky/
 
@@ -70,20 +71,21 @@ compile the Husky-Programs yourself
 
 %prep
 %setup -q -n %name
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+#% patch0 -p1
+#% patch1 -p1
+#% patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1 -b .huskymak
+%patch8 -p1 -b .printf
 
 %build
 MANDIR=$RPM_BUILD_ROOT%{_mandir} BINDIR=$RPM_BUILD_ROOT%{_bindir} INCDIR=$RPM_BUILD_ROOT%{_includedir} LIBDIR=$RPM_BUILD_ROOT%{_libdir} INFODIR=$RPM_BUILD_ROOT%{_infodir}
 %make OPTCFLAGS=" -s -c -fPIC $RPM_OPT_FLAGS"
 
 %install
-rm -rf $RPM_BUILD_ROOT
 make BINDIR=$RPM_BUILD_ROOT%{_bindir} INCDIR=$RPM_BUILD_ROOT%{_includedir} LIBDIR=$RPM_BUILD_ROOT%{_libdir} INFODIR=$RPM_BUILD_ROOT%{_infodir} install
 rm -rf $RPM_BUILD_ROOT%{_infodir}/dir
 make MANDIR=$RPM_BUILD_ROOT%{_mandir} install-man
@@ -91,21 +93,11 @@ make MANDIR=$RPM_BUILD_ROOT%{_mandir} install-man
 chmod 755 $RPM_BUILD_ROOT%_bindir/*
 chmod 755 $RPM_BUILD_ROOT%_libdir/*
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %post
 %_install_info %name.info
 
 %postun
 %_remove_install_info %name.info
-
-%if %mdkversion < 200900
-%post -n %libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libname -p /sbin/ldconfig
-%endif
 
 %files
 %defattr(-,root,root)
@@ -125,4 +117,43 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/fidoconf/*
 %{_libdir}/libfidoconfig.a
 
+
+
+
+%changelog
+* Thu Jul 24 2008 Thierry Vignaud <tvignaud@mandriva.com> 1.4.0-0.rc5.3mdv2009.0
++ Revision: 245132
+- rebuild
+
+  + Pixel <pixel@mandriva.com>
+    - do not call ldconfig in %%post/%%postun, it is now handled by filetriggers
+
+* Fri Dec 21 2007 Olivier Blin <oblin@mandriva.com> 1.4.0-0.rc5.1mdv2008.1
++ Revision: 136415
+- restore BuildRoot
+
+  + Thierry Vignaud <tvignaud@mandriva.com>
+    - kill re-definition of %%buildroot on Pixel's request
+    - do not hardcode bz2 extension
+
+
+* Sat Aug 05 2006 Olivier Thauvin <nanardon@mandriva.org>
++ 08/05/06 16:36:07 (53348)
+- 1.4-rc5
+
+* Sat Aug 05 2006 Olivier Thauvin <nanardon@mandriva.org>
++ 08/05/06 16:30:11 (53343)
+Import fidoconf
+
+* Mon Apr 17 2006 Olivier Thauvin <nanardon@mandriva.org> 1.4.0-0.rc2.3mdk
+- rebuild
+
+* Sun Jan 30 2005 Sylvie Terjan <erinmargault@mandrake.org> 1.4.0-0.rc2.2mdk
+- birthday rebuild
+
+* Tue Dec 23 2003 Olivier Thauvin <thauvin@aerov.jussieu.fr> 1.4.0-0.rc2.1mdk
+- %%mklibname
+- From Iouri Goussev <elendal@polygonized.com>
+  - First MDK version
+  - original SPEC by Sergey Zhemchugov <Sergey_Zhemchugov@p8.f822.n463.z2.fidonet.org>
 
