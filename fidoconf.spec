@@ -93,8 +93,6 @@ make MANDIR=$RPM_BUILD_ROOT%{_mandir} install-man
 chmod 755 $RPM_BUILD_ROOT%_bindir/*
 chmod 755 $RPM_BUILD_ROOT%_libdir/*
 
-%post
-%_install_info %name.info
 
 %postun
 %_remove_install_info %name.info
