@@ -94,8 +94,6 @@ chmod 755 $RPM_BUILD_ROOT%_bindir/*
 chmod 755 $RPM_BUILD_ROOT%_libdir/*
 
 
-%postun
-%_remove_install_info %name.info
 
 %files
 %defattr(-,root,root)
