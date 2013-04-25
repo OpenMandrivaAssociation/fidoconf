@@ -6,7 +6,7 @@
 %define libname %mklibname %name %major
 
 Summary:	Library to access the fidoconfig
-Name:           fidocinf
+Name:           fidoconf
 Version:        1.4.0
 Release:        4
 License:	GPL
