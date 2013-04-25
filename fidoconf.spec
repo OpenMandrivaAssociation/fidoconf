@@ -1,17 +1,14 @@
-%define name    fidoconf
-%define version 1.4.0
 %define preversion rc5
 
-%define rel 3
 %define release 0.%{preversion}.%{rel}
 
 %define major 1.4
 %define libname %mklibname %name %major
 
 Summary:	Library to access the fidoconfig
-Name:       %{name}
-Version:    %{version}
-Release:    %{release}
+Name:           fidocinf
+Version:        1.4.0
+Release:        4
 License:	GPL
 Group:		File tools
 Source0:		%{name}-%{major}-%{preversion}.tar.bz2
@@ -82,32 +79,29 @@ compile the Husky-Programs yourself
 %patch8 -p1 -b .printf
 
 %build
-MANDIR=$RPM_BUILD_ROOT%{_mandir} BINDIR=$RPM_BUILD_ROOT%{_bindir} INCDIR=$RPM_BUILD_ROOT%{_includedir} LIBDIR=$RPM_BUILD_ROOT%{_libdir} INFODIR=$RPM_BUILD_ROOT%{_infodir}
-%make OPTCFLAGS=" -s -c -fPIC $RPM_OPT_FLAGS"
+MANDIR=%{buildroot}%{_mandir} BINDIR=%{buildroot}%{_bindir} INCDIR=%{buildroot}%{_includedir} LIBDIR=%{buildroot}%{_libdir} INFODIR=%{buildroot}%{_infodir}
+%make OPTCFLAGS=" -s -c -fPIC %{optflags}"
 
 %install
-make BINDIR=$RPM_BUILD_ROOT%{_bindir} INCDIR=$RPM_BUILD_ROOT%{_includedir} LIBDIR=$RPM_BUILD_ROOT%{_libdir} INFODIR=$RPM_BUILD_ROOT%{_infodir} install
-rm -rf $RPM_BUILD_ROOT%{_infodir}/dir
-make MANDIR=$RPM_BUILD_ROOT%{_mandir} install-man
+make BINDIR=%{buildroot}%{_bindir} INCDIR=%{buildroot}%{_includedir} LIBDIR=%{buildroot}%{_libdir} INFODIR=%{buildroot}%{_infodir} install
+rm -rf %{buildroot}%{_infodir}/dir
+make MANDIR=%{buildroot}%{_mandir} install-man
 
-chmod 755 $RPM_BUILD_ROOT%_bindir/*
-chmod 755 $RPM_BUILD_ROOT%_libdir/*
+chmod 755 %{buildroot}%{_bindir}/*
+chmod 755 %{buildroot}%{_libdir}/*
 
 
 
 %files
-%defattr(-,root,root)
 %doc COPYING ChangeLog HISTORY INSTALL README.TXT TODO VERSION fconf2dir fconf2fidogate.cfg.sample doc/config
 %{_bindir}/*
 %{_infodir}/fidoconfig.info*
 %{_mandir}/*/*
 
 %files -n %libname
-%defattr(-,root,root)
 %{_libdir}/libfidoconfig.so.*
 
 %files -n %libname-devel
-%defattr(-,root,root)
 %{_libdir}/libfidoconfig.so
 %dir %{_includedir}/fidoconf
 %{_includedir}/fidoconf/*
