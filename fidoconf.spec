@@ -8,7 +8,7 @@
 Summary:	Library to access the fidoconfig
 Name:           fidoconf
 Version:        1.4.0
-Release:        4
+Release:        5
 License:	GPL
 Group:		File tools
 Source0:		%{name}-%{major}-%{preversion}.tar.bz2
