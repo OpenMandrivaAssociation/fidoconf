@@ -21,6 +21,7 @@ Patch5:		fidoconf-tparser.diff
 Patch6:		fidoconf-Makefile.diff
 patch7:		fidoconf-1.4-rc5.huskymak.patch
 patch8:		fidoconf-1.4-rc5.printf.patch
+BuildRequires:	make
 BuildRequires:	huskybse smapi-devel texinfo
 URL:		https://sourceforge.net/projects/husky/
 
